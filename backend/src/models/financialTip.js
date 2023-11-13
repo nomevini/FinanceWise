@@ -8,6 +8,10 @@ const FinancialTip = sequelize.define('DicaFinanceira', {
     autoIncrement: true,
     allowNull: false,
   },
+  categoriaId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
   titulo: {
     type: DataTypes.STRING,
     allowNull: false,
