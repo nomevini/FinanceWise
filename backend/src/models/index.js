@@ -19,6 +19,10 @@ Transaction.belongsTo(PaymentMethod, { foreignKey: 'metodoPagamento' });
 FinancialGoal.hasMany(Transaction, { foreignKey: 'metaId' });
 Transaction.belongsTo(FinancialGoal, { foreignKey: 'metaId' });
 
+// Usuario - MetaFinanceira
+User.hasMany(FinancialGoal, { foreignKey: 'usuarioId' });
+FinancialGoal.belongsTo(User, { foreignKey: 'usuarioId' });
+
 // Transacao -  Usuario
 User.hasMany(Transaction, { foreignKey: 'usuarioId' });
 Transaction.belongsTo(User, { foreignKey: 'usuarioId' });
@@ -26,6 +30,18 @@ Transaction.belongsTo(User, { foreignKey: 'usuarioId' });
 // Usuario - DicaFinanceira
 User.hasMany(FinancialTip, { foreignKey: 'idAdmin' });
 FinancialTip.belongsTo(User, { foreignKey: 'idAdmin' });
+
+// Categoria - DicaFinanceira
+TransactionCategory.hasMany(FinancialTip, { foreignKey: 'categoriaId' });
+FinancialTip.belongsTo(TransactionCategory, { foreignKey: 'categoriaId' });
+
+// CategoriaTransacao - Usuario
+User.hasMany(TransactionCategory, { foreignKey: 'usuarioId' });
+TransactionCategory.belongsTo(User, { foreignKey: 'usuarioId' });
+
+// MetodoPagamento - Usuario
+User.hasMany(PaymentMethod, { foreignKey: 'usuarioId' });
+PaymentMethod.belongsTo(User, { foreignKey: 'usuarioId' });
 
 sequelize.sync()
   .then(() => {

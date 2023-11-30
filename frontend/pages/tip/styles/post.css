@@ -1,0 +1,17 @@
+.post {
+    background-color: white;
+    padding: 10px 20px 10px 20px;
+    margin-bottom: 10px;
+
+    border-radius: 10px;
+}
+
+.post h2 {
+    margin-top: 10px;
+    font-weight: bold;
+    color: black;
+}
+
+.category {
+    margin: 10px 0;
+}

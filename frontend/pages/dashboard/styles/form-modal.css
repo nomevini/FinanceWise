@@ -1,0 +1,97 @@
+/* Form */
+#form {
+    max-width: 500px;
+}
+#form h2 {
+    margin-top: 0;
+}
+input {
+    width: 100%;
+
+    padding: 0.8rem;
+
+    border: none;
+    border-radius: 0.2rem;
+    -webkit-border-radius: 0.2rem;
+    -moz-border-radius: 0.2rem;
+    -ms-border-radius: 0.2rem;
+    -o-border-radius: 0.2rem;
+}
+
+select {
+    background-color: white;
+
+    width: 100%;
+
+    padding: 0.8rem;
+
+    border: none;
+    border-radius: 0.2rem;
+    -webkit-border-radius: 0.2rem;
+    -moz-border-radius: 0.2rem;
+    -ms-border-radius: 0.2rem;
+    -o-border-radius: 0.2rem;
+}
+
+.input-group {
+    margin-top: 0.8rem;
+}
+small.help-for-modal {
+    opacity: 0.4;
+}
+.input-group.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.input-group.actions .button,
+.input-group.actions button {
+    width: 48%;
+}
+
+
+#modal-button {
+    height: 50px;
+    color: white;
+    background: var(--normal-green);
+}
+
+#modal-button:hover {
+    background: var(--dark-green);
+    
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+
+
+
+.button.cancel {
+    height: 50px;
+    
+    color: var(--normal-red);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--normal-red);
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
+
+    opacity: 0.6;
+}
+.button.cancel:hover {
+    opacity: 1;
+
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+}

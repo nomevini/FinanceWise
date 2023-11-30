@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="./assets/favicon.png" type="image/x-icon">
+  <title>Login - FinanceWise</title>
+
+</head>
+<body>
+  <div class="main">
+    <div class="login">
+      <img class="logo" src="assets/logo.svg" alt="Logo FinanceWise">
+      <div class="login-wrapper">
+        <div class="login-header">  
+          <h1>Acesse a plataforma</h1>
+          <p>Faça login ou registre-se para começar a construir seus projetos ainda hoje.</p>  
+        </div>
+        <div class="login-form form">
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <label for="email">E-mail</label>
+                    <input id="email" type="text" placeholder="Digite seu e-mail">
+                    <small id="error-message">Digite um e-mail válido</small>
+                </div>
+                <div class="input-wrapper">
+                    <div class="password-header">
+                        <label for="password">Senha</label>
+                        <a href="../resetPassword/index.html">Esqueceu a senha?</a>
+                    </div>
+                    <input type="password" placeholder="Digite sua senha" id="input-password">
+                    <img id="olho-off" src="assets/icon-eye-off.svg" alt="Ícone olho cortado" class="eye" onclick="handleEye('olho-off', 'olho-on')">
+                    <img id="olho-on" src="assets/icon-eye-on.svg" alt="Ícone olho" class="eye d-none" onclick="handleEye('olho-on', 'olho-off')">
+                </div>
+            </div>
+
+            <button type="submit" onclick="">Entrar</button>
+            <span>
+                Ainda não tem uma conta? <a href="#" onclick="showSignupForm()">Inscreva-se</a> 
+            </span>
+        </div>
+
+        <form class="signup-form form" style="display: none;" action="submit">
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <label for="name">Nome</label>
+                    <input id="name" type="text" placeholder="ex: Vinícius">
+                    
+                </div>
+                <div class="input-wrapper">
+                    <label for="lastname">Sobrenome</label>
+                    <input id="lastname" type="text" placeholder="ex: Carvalho">
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="date">Data de Nascimento</label>
+                    <input type="date" id="date" name="date">
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="signup-email">E-mail</label>
+                    <input id="signup-email" type="text" placeholder="Digite seu e-mail">
+                    <small id="signup-error-message">Digite um e-mail válido</small>
+                </div>
+                <div class="input-wrapper">
+                    <div class="password-header">
+                        <label for="signup-password">Senha</label>
+                    </div>
+                    <input type="password" placeholder="Digite sua senha" id="signup-password">
+                    <img id="signup-olho-off" src="assets/icon-eye-off.svg" alt="Ícone olho cortado" class="eye" onclick="handleEye('signup-olho-off', 'signup-olho-on')">
+                    <img id="signup-olho-on" src="assets/icon-eye-on.svg" alt="Ícone olho" class="eye d-none" onclick="handleEye('signup-olho-on', 'signup-olho-off')">
+                </div>
+            </div>
+        
+            <button id="submit-button" type="submit">Cadastrar</button>
+            
+            <span>
+                Já tem uma conta? <a href="#" onclick="showLoginForm()">Faça login</a>
+            </span>
+        </form>
+      
+      </div>
+    </div>
+    <div class="image"></div>
+  </div>
+
+  <script src="./scripts/script.js"></script>
+
+</body>
+</html>

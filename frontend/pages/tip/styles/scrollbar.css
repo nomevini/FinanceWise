@@ -1,0 +1,19 @@
+/* 1 */
+::-webkit-scrollbar {
+    width: 7px;
+}
+::-webkit-scrollbar:horizontal {
+    height: 7px;
+}
+::-webkit-scrollbar,
+::-webkit-scrollbar:horizontal {
+    background: var(--background);   /*default: #F4F4F4*/
+}
+/* 5 */
+::-webkit-scrollbar-thumb {
+    background: var(--light-green);   /*default: #dad7d7*/
+}
+/* 6 */
+::-webkit-scrollbar-corner {
+    background: var(--background);
+}

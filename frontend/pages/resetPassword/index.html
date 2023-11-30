@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="./assets/favicon.png" type="image/x-icon">
+  <title>Recuperar senha - FinanceWise</title>
+
+</head>
+<body>
+  <div class="main">
+    <div class="login">
+      <img class="logo" src="assets/logo.svg" alt="Logo FinanceWise">
+      <div class="login-wrapper">
+        <div class="login-header">  
+          <h1>Esqueceu sua senha? </h1>
+          <p>Não se preocupe, estamos aqui para ajudar.</p>
+          <p>Por favor, insira o endereço de e-mail associado à sua conta abaixo.</p>  
+        </div>
+        <div class="login-form form">
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <label for="email">E-mail</label>
+                    <input id="email" type="text" placeholder="Digite seu e-mail">
+                    <small id="error-message">Digite um e-mail válido</small>
+                </div>
+            </div>
+            <button type="submit" onclick="resetPassword()">Enviar Link de Recuperação</button>
+        </div>
+      </div>
+      
+      <div class="email-sent form" style="display: none;">
+          <p id="mensagem-envio" >Enviaremos um link de recuperação no seu email para que você possa criar <br> uma nova senha e acessar sua conta novamente.</p>
+          <button type="submit" onclick="redirecToLogin()">Voltar e tela inicial</button>
+      </div>
+
+      </div>
+    </div>
+    <div class="image"></div>
+  </div>
+
+  <script src="./scripts/script.js"></script>
+</body>
+</html>

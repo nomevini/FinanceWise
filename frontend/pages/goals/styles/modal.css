@@ -1,0 +1,98 @@
+/* Modal */
+.modal-overlay {
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--color-modal-overlay);
+
+    position: fixed;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+
+    width: 90%;
+    max-width: 500px;
+    
+    background: var(--background-modal);
+
+    padding: 2.4rem;
+    position: relative;
+    
+    z-index: 1;
+}
+
+.modal-info {
+    
+    width: 90%;
+    max-width: 500px;
+
+    background: var(--background-modal);
+
+    padding: 2.4rem;
+    position: relative;
+    
+    z-index: 1;
+}
+
+.modal-info h2{
+    margin: 1rem 0 0.8rem;
+}
+
+.buttons-modal {
+    margin-top: 1.4rem;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.buttons-modal button {   
+    font-weight: bold;
+    opacity: 0.9; 
+    margin: 0.5rem;
+}
+
+.buttons-modal button:hover{
+    opacity: 1;
+} 
+
+#modal-delete-button {
+    height: 50px;
+}
+
+@media (min-width: 800px) {
+    .modal {
+        width: 90%;
+        max-width: 500px;
+    }
+    .modal-info {
+        width: 60%;
+        max-width: 800px;
+    }
+
+    .buttons-modal {
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .buttons-modal button {
+        width: 32%;
+    }
+
+
+}
