@@ -21,7 +21,11 @@
     opacity: 1;
     visibility: visible;
 }
+
 .modal {
+
+    width: 90%;
+    max-width: 500px;
     
     background: var(--background-modal);
 
@@ -33,7 +37,7 @@
 
 @media (min-width: 800px) {
     .modal {
-        width: 40%;
+        width: 90%;
         max-width: 500px;
     }
 }

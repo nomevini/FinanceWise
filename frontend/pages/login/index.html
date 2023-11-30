@@ -39,45 +39,50 @@
                 </div>
             </div>
 
-            <button type="submit" onclick="validate()">Entrar</button>
+            <button type="submit" onclick="">Entrar</button>
             <span>
                 Ainda não tem uma conta? <a href="#" onclick="showSignupForm()">Inscreva-se</a> 
             </span>
         </div>
 
-        <div class="signup-form form" style="display: none;">
-          <div class="input-group">
-              <div class="input-wrapper">
-                  <label for="name">Nome</label>
-                  <input id="name" type="text" placeholder="ex: Vinícius">
-                  
-              </div>
-              <div class="input-wrapper">
-                  <label for="lastname">Sobrenome</label>
-                  <input id="lastname" type="text" placeholder="ex: Carvalho">
-                  
-              </div>
-              <div class="input-wrapper">
-                  <label for="signup-email">E-mail</label>
-                  <input id="signup-email" type="text" placeholder="Digite seu e-mail">
-                  <small id="error-message">Digite um e-mail válido</small>
-              </div>
-              <div class="input-wrapper">
-                  <div class="password-header">
-                      <label for="signup-password">Senha</label>
-                  </div>
-                  <input type="password" placeholder="Digite sua senha" id="signup-password">
-                  <img id="signup-olho-off" src="assets/icon-eye-off.svg" alt="Ícone olho cortado" class="eye" onclick="handleEye('signup-olho-off', 'signup-olho-on')">
-                  <img id="signup-olho-on" src="assets/icon-eye-on.svg" alt="Ícone olho" class="eye d-none" onclick="handleEye('signup-olho-on', 'signup-olho-off')">
-              </div>
-          </div>
-      
-          <button type="submit" onclick="validate()">Cadastrar</button>
-          
-          <span>
-              Já tem uma conta? <a href="#" onclick="showLoginForm()">Faça login</a>
-          </span>
-      </div>
+        <form class="signup-form form" style="display: none;" action="submit">
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <label for="name">Nome</label>
+                    <input id="name" type="text" placeholder="ex: Vinícius">
+                    
+                </div>
+                <div class="input-wrapper">
+                    <label for="lastname">Sobrenome</label>
+                    <input id="lastname" type="text" placeholder="ex: Carvalho">
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="date">Data de Nascimento</label>
+                    <input type="date" id="date" name="date">
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="signup-email">E-mail</label>
+                    <input id="signup-email" type="text" placeholder="Digite seu e-mail">
+                    <small id="signup-error-message">Digite um e-mail válido</small>
+                </div>
+                <div class="input-wrapper">
+                    <div class="password-header">
+                        <label for="signup-password">Senha</label>
+                    </div>
+                    <input type="password" placeholder="Digite sua senha" id="signup-password">
+                    <img id="signup-olho-off" src="assets/icon-eye-off.svg" alt="Ícone olho cortado" class="eye" onclick="handleEye('signup-olho-off', 'signup-olho-on')">
+                    <img id="signup-olho-on" src="assets/icon-eye-on.svg" alt="Ícone olho" class="eye d-none" onclick="handleEye('signup-olho-on', 'signup-olho-off')">
+                </div>
+            </div>
+        
+            <button id="submit-button" type="submit">Cadastrar</button>
+            
+            <span>
+                Já tem uma conta? <a href="#" onclick="showLoginForm()">Faça login</a>
+            </span>
+        </form>
       
       </div>
     </div>
@@ -85,5 +90,6 @@
   </div>
 
   <script src="./scripts/script.js"></script>
+
 </body>
 </html>

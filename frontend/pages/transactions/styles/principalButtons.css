@@ -1,0 +1,217 @@
+button {
+    border: none;
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
+
+    padding: 0;
+
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;  
+    margin-bottom: 2rem;  
+    width: 100%;
+}
+
+.buttons .btn {
+    background-color: white;
+    color: var(--color-modal-overlay);
+    margin: 0px 20px 0 0;
+    width: 124px;
+    height: 50px;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.buttons .btn p {
+    font-size: 11pt;
+}
+
+.buttons .btn img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.btn.btn-receita:hover {
+    background-color: var(--light-green);
+}
+
+.btn.btn-despesa:hover {
+    background-color: var(--light-red);
+}
+
+
+.buttons .dropdown .dropbtn:hover{
+    background-color: var(--light-green);
+}
+
+.dropdown {
+    
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    /*background-color: #f1f1f1;*/
+    background-color: var(--light-green);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+ 
+.buttons .btn.filtro {
+    background-color: white;
+    color: var(--color-modal-overlay);
+    width: 65px;
+    /*padding: 5px 10px;*/
+    border-radius: 5px;
+}
+
+.centralizandoIconFiltro{
+    color : white;
+}
+
+/*Botão de buscar*/
+.search-bar {
+    width: 200px;
+    padding: 10px 10px;
+    margin-right: -55px;
+    /*border: 1px solid lightblue;*/
+}
+
+.buttons .btn.buscar{
+    background-color: white;
+    width: 50px;
+    border-radius: 0px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/*Teste*/
+.filter-search-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Empurra para a direita */
+}
+
+.search-bar {
+    width: 200px; 
+    padding: 10px;
+    height: 50px;
+}
+
+.buttons .btn.filtro {
+    width: 60px;
+}
+
+.buttons .btn.filtro:hover {
+    color:#4CAF50;
+    background-color: var(--link-light-green);
+}
+
+button.btn.filtro {
+    /* Outras propriedades do botão */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img.IconFiltro {
+    /* Outras propriedades da imagem */
+    padding-right: 0px;
+    margin: 0px; /* Adapte conforme necessário */
+    margin: 0px !important;
+}
+
+.buttons .btn.buscar {
+    width: 50px;
+}
+
+/*Botao gerar relatório*/
+.acimaRodape{
+    width:134px;
+    padding: 10px 0px;
+    margin-top: 20px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.acimaRodape p{
+    color: black;
+}
+
+.acimaRodape img {
+    margin-left:10px; /* ou a margem desejada */
+}
+
+
+@media (max-width: 800px) {
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+
+    .buttons .btn {
+        width: 90%;
+        max-width: 287px;
+        margin-top: 10px;
+        margin-right: 0px;
+        
+    }
+
+    .filtro {
+        margin-right: 10px !important;
+        width: 50px !important;
+    }
+
+    .dropdown{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .dropdown-content {
+        position: relative;
+        width: 70%;
+        z-index: 1;
+    }
+
+    .filter-search-container {
+        margin: 0;    
+    }
+
+    .search-bar {
+        margin-top: 10px;
+    }
+}

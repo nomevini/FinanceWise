@@ -1,17 +1,28 @@
 const express = require('express')
+const { registerUser, deleteUser, login } = require('../controllers/user')
+const authentication = require('../middlewares/authentication')
 
 const routes = express()
 
 // rotas publicas
 
-routes.post('/login', ) // realizar login
-routes.post('/usuarios', ) // realizar cadastro
+routes.post('/login', login) // realizar login
+routes.post('/usuario', registerUser) // realizar cadastro
 routes.post('/recuperar-senha', ) 
 routes.put('/atualizar-senha', ) 
 
-// rotas privadas
+// middlewares de autenticacao
+routes.use(authentication)
 
-routes.put('/usuarios', ) // Editar usuario
+routes.get('/test', (req, res) => {
+    const {usuario} = req
+    console.log(usuario)
+    return res.status(200).json({message: 'Voce é foda'})
+})
+
+// rotas privadas
+routes.put('/usuario', ) // Editar usuario
+routes.delete('/usuario', deleteUser) // Deletar usuario
 
 routes.get('/balanco', ) // buscar despesa mensal, receita mensal e balanco
 routes.get('/transacoes', ) // listar as despesas de um usuario

@@ -14,18 +14,32 @@ function handleEye(id1, id2) {
   }
 }
 
-function validate() {
-  var email = document.getElementById("email");
-  var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  var error = document.getElementById('error-message');
+function validate(idEmailInput, idErrorMessage) {
 
-  if (!regex.test(email.value)) {
-    error.style.display = 'block';
-    email.style.borderColor = '#ED3A5A';
-  } else {
-    error.style.display = 'none';
-    email.style.borderColor = ' #E2E8F0';
-  }
+    var email = document.getElementById(`${idEmailInput}`);
+    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var error = document.getElementById(`${idErrorMessage}`);
+
+    const name = document.getElementById('name').value;
+    const lastname = document.getElementById('lastname').value;
+    const date = document.getElementById('date').value;
+    const password = document.getElementById('signup-password').value;
+
+    if (!name || !lastname || !date || !password) {
+        // trocar pelo toast erros presente no dashboard
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return false;
+    }
+
+    if (!regex.test(email.value)) {
+        error.style.display = 'block';
+        email.style.borderColor = '#ED3A5A';
+        return false;
+    } else {
+        error.style.display = 'none';
+        email.style.borderColor = ' #E2E8F0';
+        return true;
+    }
 }
 
 // Função para mostrar o formulário de cadastro e ocultar o de login
@@ -63,3 +77,53 @@ function showLoginForm() {
       `;
   }
 }
+
+async function registerUser(admin=undefined) {
+  // capturar os dados do form
+    const user = {
+        nome: document.getElementById('name').value,
+        sobrenome: document.getElementById('lastname').value,
+        dataNascimento: document.getElementById('date').value,
+        email: document.getElementById('signup-email').value,
+        senha: document.getElementById('signup-password').value
+    }
+
+    if(!admin){
+        admin = false
+    }
+
+    user.admin = admin
+
+    try {
+        let response = await fetch('http://localhost:3000/usuario', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erro na requisição: ${response.status}`);
+        }
+
+        let data = await response.json();
+        console.log('Usuário cadastrado com sucesso:', data);
+
+    } catch (error) {
+        console.error('Erro no cadastro de usuário:', error.message);
+    }
+}
+
+
+let registerForm = document.querySelector(".signup-form")
+registerForm.addEventListener('submit', function (event) {
+
+  event.preventDefault();
+
+  // Chama a função de validação ao enviar o formulario
+  if(validate('signup-email', 'signup-error-message')) {
+    // registrar usuario
+    registerUser()
+  }
+});

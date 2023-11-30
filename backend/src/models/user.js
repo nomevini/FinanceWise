@@ -36,8 +36,11 @@ const User = sequelize.define('Usuario', {
   admin: {
     type: DataTypes.BOOLEAN,
     allowNull: false
+  },
+  imagemPerfil: {
+    type: DataTypes.BLOB,
+    allowNull: true, // Pode ser nulo se o usuário não tiver uma imagem
   }
-  // Outros campos da tabela
 }, {
   freezeTableName: true,
 });

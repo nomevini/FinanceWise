@@ -1,16 +1,26 @@
 const Modal = {
-    open() {
-        document
-            .querySelector(".modal-overlay")
-            .classList
-            .add("active")
+    open(transactionType, modalClass) {
+
+        const modal = document.querySelector(`.${modalClass}`)
+        const modalTitle = document.querySelector("#modal-title")
+        
+        modalTitle.innerText = `${capitalizeFirstLetter(transactionType)}`
+
+        modal.classList.add("active")
     },
-    close() {
+    close(modalClass) {
         document
-            .querySelector(".modal-overlay")
+            .querySelector(`.${modalClass}`)
             .classList
             .remove("active")
     }
+}
+
+function capitalizeFirstLetter(string) {
+    let arrayString = string.split('')
+    let firstLetter = arrayString[0].toUpperCase()
+    let remaining = arrayString.slice(1, arrayString.length)
+    return firstLetter + remaining.join('')
 }
 
 const CardColor = {
@@ -36,52 +46,6 @@ const CardColor = {
     }
 }
 
-const Storage = {
-    get() {
-        return JSON.parse(localStorage.getItem("dev.finances:transactions")) || []
-    },
-    set(transactions) {
-        localStorage.setItem("dev.finances:transactions", JSON.stringify(transactions))
-    }
-}
-
-const Transaction = {
-    all: Storage.get(),
-    add(transaction) {
-        Transaction.all.push(transaction);
-
-        App.reload()
-    },
-    remove(index) {
-        Transaction.all.splice(index, 1)
-
-        App.reload()
-    },
-    incomes() { // Somar entradas
-        let income = 0
-
-        Transaction.all.forEach(transaction => {
-            if (transaction.amount > 0) {
-                income += transaction.amount
-            }
-        })
-        return income
-    },
-    expenses() { // Somar saídas
-        let expense = 0
-
-        Transaction.all.forEach(transaction => {
-            if (transaction.amount < 0) {
-                expense += transaction.amount
-            }
-        })
-        return expense
-    },
-    total() { // Entradas menos saídas
-        return Transaction.incomes() + Transaction.expenses()
-    }
-}
-
 const DOM = {
     transactionsContainer: document.querySelector("#data-table tbody"),
     addTransaction(transactions, index) {
@@ -102,19 +66,6 @@ const DOM = {
         } else if (transactions.stats.toUpperCase().trim() === "CANCELADO" || transactions.stats.toUpperCase().trim() === "CANCELADA") {
             statusColor = "Canceled";
         } 
-        
-        /*const html = `
-        <td class="description">${transactions.description}</td>
-        <td class="${CSSclass}">${amount}</td>
-        <td class="category">${transactions.category}</td>
-        <td class="paymentMethod">${transactions.paymentMethod}</td>
-        <td class="numberPayments">${transactions.numberPayments}</td>  
-        <td class="stats">${transactions.stats}</td>
-        <td class="date">${transactions.date}</td>
-        <td>
-            <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" class="remove" alt="Remover Transação">
-        </td>
-        `;*/
 
         const newHTML = `
         <tr class="TransactionLine">
@@ -157,41 +108,6 @@ const DOM = {
     },
     clearTransactions(){
         DOM.transactionsContainer.innerHTML = ""
-    }
-}
-
-const Utils = {
-    formatCurrency(value) {
-        const signal = Number(value) < 0 ? "-&nbsp;" : "+&nbsp;"
-
-        value = String(value).replace(/\D/g, "")
-        value = Number(value) / 100
-        value = value.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-        })
-
-        return signal + value
-    },
-    formatAmount(value) {
-        value = value * 100
-        return Math.round(value)
-    },
-    formatSimple(value){
-        const signal = Number(value) < 0 ? "- " : "+ "
-
-        value = String(value).replace(/\D/g, "")
-        value = Number(value) / 100
-        value = value.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-        })
-
-        return signal + value
-    },
-    formatDate(date) {
-        const splittedDate = date.split("-")
-        return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`
     }
 }
 
@@ -262,39 +178,13 @@ const Form = {
         } catch (error) {
             console.warn(error.message)
             toastError(error.message)
-            //alert(error.message)
+            
         }
     }
 }
 
-const App = {
-    init() {
-        /* Transaction.all.forEach((transactions, index) => {
-            DOM.addTransaction(transactions, index)
-        })
-         ou ↓ */
-        Transaction.all.forEach(DOM.addTransaction)
-
-        DOM.updateBalance()  // Atualiza o valor dos cards
-        DOM.totalCardColor() // Atualiza a cor do card 'total'
-
-        Storage.set(Transaction.all)
-    },
-    reload() {
-        DOM.clearTransactions()
-        App.init()
-    }
-}
-App.init()
-
 
 function toastError(message = "ERRO!") {
-    /*let a = document.querySelector("???").innerHTML = `
-    <div id="toast">
-    <div class="img">Icon</div>
-    <div class="description">${message}</div>
-    </div>`*/
-
     const toastId = document.querySelector("#toast")
     toastId.className = "show"
 
@@ -341,4 +231,14 @@ document.addEventListener("DOMContentLoaded", function () {
             valor.innerText = originalValue;
         });
     }
+});
+
+/* Abrir o menu de sanduíche */
+document.addEventListener('DOMContentLoaded', function () {
+    const menuIcon = document.getElementById('menu-icon');
+    const navbar = document.getElementById('navbar');
+  
+    menuIcon.addEventListener('click', function () {
+      navbar.classList.toggle('show');
+    });
 });

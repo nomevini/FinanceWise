@@ -33,13 +33,23 @@
 
 <body>
     <header>
-        <div class="header-itens">
-            <a class="navbar" href="#" alt="LogoFinanceWise"><img src="./assets/logo.svg" alt="logo dev.finance$"/></a>
-            <div class="navbar">
-                <a href="/">Tela de Início</a>
-                <a href="/">Transações</a>
-                <a href="/">Escola de Finanças</a>
-                <a href="/">Metas</a>
+        <div class="header-items">
+            <a id="img-logo" class="navbar" href="#" alt="LogoFinanceWise"><img src="./assets/logo.svg" alt="logo FinanceWise"/></a>
+            <button id="menu-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+            <a style="display: none;" id="img-logo-menu" href="#" alt="LogoFinanceWise"><img src="./assets/logo.svg" alt="logo FinanceWise"/></a>
+            <div class="navbar" id="navbar">
+                <a href="../dashboard/index.html">Tela de Início</a>
+                <a href="../transactions/index.html">Transações</a>
+                <a href="../tip/index.html">Escola de Finanças</a>
+                <a href="../goals/index.html">Metas</a>
+            </div>
+            <div id="user-logo">
+                <button id="user" onclick="Modal.open('editar usuario','modal-usuario')"><img src="./assets/user.png" alt="Perfil do usuário"></button>
+                <button id="logout" onclick="" type="submit"><img src="./assets/logout.png" alt="Sair da conta"></button>
             </div>
         </div>
     </header>
@@ -72,11 +82,11 @@
         </section>
 
         <div class="buttons">
-            <button class="btn receita" onclick="Modal.open()">
+            <button class="btn receita" onclick="Modal.open('Nova Receita', 'modal-transacao')">
                 <img src="./assets/receita.svg" alt="Adicionar receita">
                 <p>Receita</p>
             </button>
-            <button class="btn despesa" onclick="Modal.open()">
+            <button class="btn despesa" onclick="Modal.open('Nova Despesa', 'modal-transacao')">
                 <img src="./assets/despesa.svg" alt="Adicionar despesa">
                 <p>Despesa</p>
             </button>
@@ -105,15 +115,15 @@
         </section>
     </main>
 
-    <div class="modal-overlay">
+    <div class="modal-overlay modal-transacao">
         <div class="modal">
             <div id="form">
-                <h2>Nova Transação</h2>
+                <h2 id="modal-title">Nova Transação</h2>
 
                 <form action="" onsubmit="Form.submit(event)">
                     <div class="input-group">
                         <label for="description" class="sr-only">Descrição</label>
-                        <input type="text" id="description" name="description" placeholder="Description">
+                        <input type="text" id="description" name="description" placeholder="Descrição">
                     </div>
 
                     <div class="input-group">
@@ -123,22 +133,43 @@
 
                     <div class="input-group">
                         <label for="amount" class="sr-only">Categoria</label>
-                        <input type="" id="category" name="category" placeholder="Categoria">
+        
+                        <select id="category" name="category"placeholder="Categoria">
+                            <option value="" selected disabled>Categoria</option>
+                            <option value="alimentacao">Alimentação</option>
+                            <option value="transporte">Transporte</option>
+                            <option value="moradia">Moradia</option>
+                            <option value="entretenimento">Entretenimento</option>
+                            <option value="saude">Saúde</option>
+                            <option value="outros">Outros</option>
+                        </select>
                     </div>
 
                     <div class="input-group">
                         <label for="amount" class="sr-only">Forma de pagamento</label>
-                        <input type="" id="paymentMethod" name="paymentMethod" placeholder="Forma de pagamento">
+                
+                        <select id="paymentMethod" name="paymentMethod" placeholder="Forma de pagamento">
+                            <option value="" selected disabled>Forma de pagamento</option>
+                            <option value="pix">PIX</option>
+                            <option value="cartaoCredito">Cartão de Crédito</option>
+                            <option value="cartaoDebito">Cartão de Débito</option>
+                            <option value="dinheiro">Dinheiro</option>
+                          </select>
                     </div>
 
                     <div class="input-group">
                         <label for="amount" class="sr-only">Status</label>
-                        <input type="" id="stats" name="stats" placeholder="Status">
+                    
+                        <select id="stats" name="stats" placeholder="Status">
+                            <option value="" selected disabled>Escolha o status da transação</option>
+                            <option value="finalizada">Finalizada</option>
+                            <option value="pendente">Pendente</option>
+                          </select>
                     </div>
 
                     <div class="input-group">
                         <label for="amount" class="sr-only">Quantidade de parcelas</label>
-                        <input type="" id="numberPayments" name="numberPayments" placeholder="Quantidade de parcelas">
+                        <input type="number" id="numberPayments" name="numberPayments" placeholder="Quantidade de parcelas">
                     </div>
 
                     <div class="input-group">
@@ -147,13 +178,60 @@
                     </div>
 
                     <div class="input-group actions">
-                        <a href="#" onclick="Modal.close()" class="button cancel">Cancelar</a>
-                        <button type="submit">Salvar</button>
+                        <a href="#" onclick="Modal.close('modal-transacao')" class="button cancel">Cancelar</a>
+                        <button id="modal-button" type="submit">Salvar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    
+    <div class="modal-overlay modal-usuario">
+        <div class="modal">
+            <div id="form">
+                <form action="" onsubmit="Form.submit(event)">
+                    <h2 id="modal-title">Editar usuário</h2>
+                    <div class="input-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" placeholder="Vinícius">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="lastname">Sobrenome</label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Carvalho">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="date">Data de nascimento</label>
+                        <input type="date" id="date" name="date">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="genero">Sexo</label>
+                        <select id="genero" name="genero">
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="outro">Outro</option>
+                        </select>
+
+                    </div>
+
+                    <div class="input-group">
+                        <label for="imagemInput">Escolha uma imagem para seu perfil:</label>
+                        <input type="file" id="imagemInput" name="imagem" accept="image/*">
+                    </div>                    
+                    
+                    <div class="input-group actions">
+                        <a href="#" onclick="Modal.close('modal-usuario')" class="button cancel">Cancelar</a>
+                        <button id="modal-button" type="submit">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 
     <div id="toast">
         <div class="img"><h1>×</h1></div>
@@ -161,12 +239,8 @@
     </div>
 
     <footer><small>© 2023 - FinanceWise</small></footer>
-
     
     <script src="./scripts/index.js" type="text/javascript"></script>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
-    <script src="./scripts/firebase.js"></script>
+
 </body>
 </html>
