@@ -21,12 +21,12 @@
           <h1>Acesse a plataforma</h1>
           <p>Faça login ou registre-se para começar a construir seus projetos ainda hoje.</p>  
         </div>
-        <div class="login-form form">
+        <form class="login-form form" action="submit">
             <div class="input-group">
                 <div class="input-wrapper">
                     <label for="email">E-mail</label>
-                    <input id="email" type="text" placeholder="Digite seu e-mail">
-                    <small id="error-message">Digite um e-mail válido</small>
+                    <input id="login-email" type="text" placeholder="Digite seu e-mail">
+                    <small id="login-error-message">Digite um e-mail válido</small>
                 </div>
                 <div class="input-wrapper">
                     <div class="password-header">
@@ -34,8 +34,8 @@
                         <a href="../resetPassword/index.html">Esqueceu a senha?</a>
                     </div>
                     <input type="password" placeholder="Digite sua senha" id="input-password">
-                    <img id="olho-off" src="assets/icon-eye-off.svg" alt="Ícone olho cortado" class="eye" onclick="handleEye('olho-off', 'olho-on')">
-                    <img id="olho-on" src="assets/icon-eye-on.svg" alt="Ícone olho" class="eye d-none" onclick="handleEye('olho-on', 'olho-off')">
+                    <img id="olho-off" src="assets/icon-eye-off.svg" alt="Ícone olho cortado" class="eye" onclick="handleEye('olho-off', 'olho-on', 'input-password')">
+                    <img id="olho-on" src="assets/icon-eye-on.svg" alt="Ícone olho" class="eye d-none" onclick="handleEye('olho-on', 'olho-off', 'input-password')">
                 </div>
             </div>
 
@@ -43,7 +43,7 @@
             <span>
                 Ainda não tem uma conta? <a href="#" onclick="showSignupForm()">Inscreva-se</a> 
             </span>
-        </div>
+        </form>
 
         <form class="signup-form form" style="display: none;" action="submit">
             <div class="input-group">
@@ -72,8 +72,8 @@
                         <label for="signup-password">Senha</label>
                     </div>
                     <input type="password" placeholder="Digite sua senha" id="signup-password">
-                    <img id="signup-olho-off" src="assets/icon-eye-off.svg" alt="Ícone olho cortado" class="eye" onclick="handleEye('signup-olho-off', 'signup-olho-on')">
-                    <img id="signup-olho-on" src="assets/icon-eye-on.svg" alt="Ícone olho" class="eye d-none" onclick="handleEye('signup-olho-on', 'signup-olho-off')">
+                    <img id="signup-olho-off" src="assets/icon-eye-off.svg" alt="Ícone olho cortado" class="eye" onclick="handleEye('signup-olho-off', 'signup-olho-on', 'signup-password')">
+                    <img id="signup-olho-on" src="assets/icon-eye-on.svg" alt="Ícone olho" class="eye d-none" onclick="handleEye('signup-olho-on', 'signup-olho-off', 'signup-password')">
                 </div>
             </div>
         
@@ -83,7 +83,6 @@
                 Já tem uma conta? <a href="#" onclick="showLoginForm()">Faça login</a>
             </span>
         </form>
-      
       </div>
     </div>
     <div class="image"></div>

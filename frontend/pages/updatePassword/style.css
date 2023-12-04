@@ -1,0 +1,205 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smootyhing: grayscale;
+  scroll-behavior: smooth;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.main {
+  height: 100vh;
+  background-color: #F8FAFC;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  overflow-y: auto; /* Adiciona a barra de rolagem vertical quando necessário */
+}
+
+.logo {
+  width: 200px;
+}
+
+.image {
+  display: none;
+  height: 100vh;
+  background: url('assets/bg.png') no-repeat;
+  background-size: cover;
+}
+
+.login {
+  margin: 4rem 11.2rem;
+}
+
+.login-wrapper {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 38.4rem;
+}
+
+.login-wrapper .login-header h1{
+  font-weight: 700;
+  font-size: 3.6rem;
+  line-height: 5.5rem;
+  color: #1E293B;
+}
+
+.login-wrapper .login-header p {
+  margin-top: 1.6rem;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: #475569;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.input-group .input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  position: relative;
+}
+
+.input-group .input-wrapper label{
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  color: #1E293B;
+}
+
+.input-group .input-wrapper input{
+  padding: 1.6rem 1.2rem;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 0.4rem;
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: #1E293B;
+  transition: .4s ease;
+}
+ 
+.input-group .input-wrapper small{
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  color: #ED3A5A;
+  display: none;
+}
+
+.input-group .input-wrapper img{
+  position: absolute;
+  right: 1.2rem;
+  top: 4.6rem;
+  cursor: pointer;
+}
+
+.input-group .input-wrapper img.d-none {
+  display: none;
+}
+
+.input-group .input-wrapper input:hover {
+  border: 1px solid #49AA26;
+}
+
+.input-group .input-wrapper input:focus{
+  border: 1px solid #49AA26;
+  outline: none;
+}
+
+.input-group .input-wrapper input::placeholder {
+  color: #94A3B8; 
+}
+
+.input-group .input-wrapper .password-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-group .input-wrapper .password-header a {
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  color: #49AA26;
+}
+
+.form button[type="submit"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.6rem 2.4rem;
+  gap: 1rem;
+  background: #49AA26;
+  border-radius: 0.4rem;
+  border: none;
+  cursor: pointer;
+
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: #FFFFFF;
+
+  transition: .4s ease-in-out;
+}
+
+
+.form button[type="submit"]:hover {
+  background: #3E9220;
+}
+
+
+.form span {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: #1E293B;
+}
+
+.form span a {
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: #49AA26;
+}
+
+
+.email-sent {
+  margin-top: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}

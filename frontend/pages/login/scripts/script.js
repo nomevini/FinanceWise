@@ -1,11 +1,11 @@
-function handleEye(id1, id2) {
+function handleEye(id1, id2, password) {
   var img1 = document.getElementById(id1);
   var img2 = document.getElementById(id2);
 
   img1.classList.add("d-none");
   img2.classList.remove("d-none");
 
-  var input = document.getElementById('input-password');
+  var input = document.getElementById(`${password}`);
 
   if (input.type === "password") {
     input.type = "text";
@@ -19,17 +19,6 @@ function validate(idEmailInput, idErrorMessage) {
     var email = document.getElementById(`${idEmailInput}`);
     var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var error = document.getElementById(`${idErrorMessage}`);
-
-    const name = document.getElementById('name').value;
-    const lastname = document.getElementById('lastname').value;
-    const date = document.getElementById('date').value;
-    const password = document.getElementById('signup-password').value;
-
-    if (!name || !lastname || !date || !password) {
-        // trocar pelo toast erros presente no dashboard
-        alert('Por favor, preencha todos os campos obrigatórios.');
-        return false;
-    }
 
     if (!regex.test(email.value)) {
         error.style.display = 'block';
@@ -79,7 +68,7 @@ function showLoginForm() {
 }
 
 async function registerUser(admin=undefined) {
-  // capturar os dados do form
+    // capturar os dados do form
     const user = {
         nome: document.getElementById('name').value,
         sobrenome: document.getElementById('lastname').value,
@@ -108,22 +97,82 @@ async function registerUser(admin=undefined) {
         }
 
         let data = await response.json();
+
         console.log('Usuário cadastrado com sucesso:', data);
+
+        // informar para o usuario que foi cadastrado com sucesso
+        window.location.href = '../successRegister/index.html';
 
     } catch (error) {
         console.error('Erro no cadastro de usuário:', error.message);
     }
 }
 
-
 let registerForm = document.querySelector(".signup-form")
 registerForm.addEventListener('submit', function (event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const lastname = document.getElementById('lastname').value;
+    const date = document.getElementById('date').value;
+    const password = document.getElementById('signup-password').value;
+
+    if (!name || !lastname || !date || !password) {
+        // trocar pelo toast erros presente no dashboard
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return false;
+    }
+
+    // Chama a função de validação ao enviar o formulario
+    if(validate('signup-email', 'signup-error-message')) {
+        // registrar usuario
+        registerUser()
+    }
+});
+
+let loginForm = document.querySelector(".login-form")
+loginForm.addEventListener('submit', function (event) {
 
   event.preventDefault();
 
   // Chama a função de validação ao enviar o formulario
-  if(validate('signup-email', 'signup-error-message')) {
+  if(validate('login-email', 'login-error-message')) {
     // registrar usuario
-    registerUser()
+    loginUser()
   }
 });
+
+
+async function loginUser() {
+    const user = {
+        email: document.getElementById('login-email').value,
+        senha: document.getElementById('input-password').value
+    }
+
+    try {
+        let response = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+        });
+
+        let data = await response.json();
+
+        if(response.status == 401){
+            throw new Error(data.error)
+        }
+        
+        console.log('Usuário logado com sucesso:', data);
+
+        // armazenar o token no sessionStorage
+        sessionStorage.setItem('token', data.token);
+
+        window.location.href = '../dashboard/index.html'
+
+    } catch (error) {
+        console.error('Erro no login do usuário:', error.message);
+    }
+}
