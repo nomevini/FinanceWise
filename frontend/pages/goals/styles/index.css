@@ -252,12 +252,6 @@ footer {
     #img-logo-menu  {
         display: block !important; 
     }
-
-    #img-logo-menu img {
-        max-width: 190px;
-        width: 100%;
-    }
-    
     
     #menu-icon {
       display: block;

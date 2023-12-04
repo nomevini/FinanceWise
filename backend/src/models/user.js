@@ -37,6 +37,10 @@ const User = sequelize.define('Usuario', {
     type: DataTypes.BOOLEAN,
     allowNull: false
   },
+  token: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
   imagemPerfil: {
     type: DataTypes.BLOB,
     allowNull: true, // Pode ser nulo se o usuário não tiver uma imagem

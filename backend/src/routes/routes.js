@@ -1,5 +1,5 @@
 const express = require('express')
-const { registerUser, deleteUser, login } = require('../controllers/user')
+const { registerUser, deleteUser, login, resetPassword, updatePassword } = require('../controllers/user')
 const authentication = require('../middlewares/authentication')
 
 const routes = express()
@@ -8,17 +8,11 @@ const routes = express()
 
 routes.post('/login', login) // realizar login
 routes.post('/usuario', registerUser) // realizar cadastro
-routes.post('/recuperar-senha', ) 
-routes.put('/atualizar-senha', ) 
+routes.post('/recuperar-senha', resetPassword) 
+routes.put('/atualizar-senha/:token', updatePassword) 
 
 // middlewares de autenticacao
 routes.use(authentication)
-
-routes.get('/test', (req, res) => {
-    const {usuario} = req
-    console.log(usuario)
-    return res.status(200).json({message: 'Voce é foda'})
-})
 
 // rotas privadas
 routes.put('/usuario', ) // Editar usuario

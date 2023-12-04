@@ -23,14 +23,7 @@ function capitalizeFirstLetter(string) {
     return firstLetter + remaining.join('')
 }
 
-
-// lançar toast de erro
 function toastError(message = "ERRO!") {
-    /*let a = document.querySelector("???").innerHTML = `
-    <div id="toast">
-    <div class="img">Icon</div>
-    <div class="description">${message}</div>
-    </div>`*/
 
     const toastId = document.querySelector("#toast")
     toastId.className = "show"

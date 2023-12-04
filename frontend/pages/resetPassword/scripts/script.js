@@ -1,31 +1,43 @@
 function resetPassword() {
 
-  let email = document.getElementById("email");
-  let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  let error = document.getElementById('error-message');
+    let email = document.getElementById("email");
+    let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let error = document.getElementById('error-message');
   
-  if (!regex.test(email.value)) {
-    error.style.display = 'block';
-    email.style.borderColor = '#ED3A5A';
-  } else {
-    error.style.display = 'none';
-    email.style.borderColor = ' #E2E8F0';
+    if (!regex.test(email.value)) {
+        error.style.display = 'block';
+        email.style.borderColor = '#ED3A5A';
+    } else {
+        error.style.display = 'none';
+        email.style.borderColor = ' #E2E8F0';
 
-    let form = document.querySelector('.login-wrapper');
-    let emailSent = document.querySelector('.email-sent');
+        sendEmail(email.value)    
+    }
+}
 
-    // Oculte o formulário
-    form.style.display = 'none';
+async function sendEmail(email){
 
-    // envie para o backend e espera o retorno
+    const data = {
+        email: email
+    }
 
-    // caso tenha dado certo, imprima a mensagem na tela
+    try {
+        let response = await fetch('http://localhost:3000/recuperar-senha', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
 
-    // Exiba a mensagem de envio
-    emailSent.style.display = 'flex';
-  }
+        // redirecionar para a tela de atualizar senha 
+        window.location.href = '../updatePassword/index.html'; 
+
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 function redirecToLogin() {
-  window.location.href = '../login/index.html'; // Substitua com o URL desejado
+    window.location.href = '../login/index.html'; // Substitua com o URL desejado
 }

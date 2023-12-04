@@ -23,10 +23,11 @@
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/modal.css">
     <link rel="stylesheet" href="./styles/form-modal.css">
-    <link rel="stylesheet" href="./styles/float-button.css">
     <link rel="stylesheet" href="./styles/scrollbar.css">
     <link rel="stylesheet" href="./styles/toast.css">
     <link rel="stylesheet" href="./styles/animations.css">
+
+    
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
@@ -118,9 +119,9 @@
                 <p class="category">Categoria: Finanças Pessoais</p>
                 <p class="content">Economizar dinheiro pode parecer desafiador, mas com algumas práticas simples, você pode fazer uma grande diferença no seu orçamento. Considere cortar pequenos gastos desnecessários, como café comprado diariamente. Além disso, criar um plano de gastos mensal pode ajudar a manter o controle das suas finanças. Lembre-se, pequenas economias diárias podem se transformar em grandes economias ao longo do tempo.</p>
         
-                <div class="input-group actions">
+                <div class="input-group actions complete-tip">
                     <a href="#" onclick="Modal.close('modal-dica-completa')" class="button cancel">Voltar</a>
-                    <button id="modal-button" type="submit">Salvar</button>
+                    <button class="save-tip" id="modal-button" type="submit">Salvar</button>
                     <button id="modal-delete-button" class="red" type="submit">Excluir dica</button>
                 </div>
             </div>
@@ -189,5 +190,8 @@
     </footer>
 
     <script src="./scripts/index.js" type="text/javascript"></script>
+    <script src="./scripts/authorization.js" type="module"></script>
+    
+
 </body>
 </html>

@@ -1,3 +1,4 @@
 /backend/node_modules
 /backend/pg_credentials.js
 /backend/jwt_credentials.js
+/backend/src/emailAuth.js
