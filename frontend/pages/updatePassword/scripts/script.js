@@ -36,8 +36,16 @@ async function sendRequest(){
         });
 
         const data = await response.json()
-
-        console.log(data)
+        
+        if (data.message) {
+            // redirecionar para a tela de senha alterada com sucesso
+            window.location.href = '../successfullResetPassword/index.html';
+            
+        } else if(data.error){
+            // lançar no toast
+            console.log(`data aqui ${data.error}`)
+            toastError(data.error)
+        }
 
         // atualizar tela para o usuario voltar para tela de login
 
@@ -48,4 +56,17 @@ async function sendRequest(){
 
 function redirecToLogin() {
     window.location.href = '../login/index.html';
+}
+
+
+function toastError(message = "ERRO!") {
+    const toastId = document.querySelector("#toast")
+    const toastText = document.querySelector('.description')
+
+    toastText.innerText = message
+    toastId.className = "show"
+
+    setTimeout(() => {
+        toastId.className = toastId.className.replace("show", "")
+    }, 5000)
 }

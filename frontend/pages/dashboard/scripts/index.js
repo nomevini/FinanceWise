@@ -186,6 +186,7 @@ const Form = {
 
 function toastError(message = "ERRO!") {
     const toastId = document.querySelector("#toast")
+
     toastId.className = "show"
 
     setTimeout(() => {
@@ -242,3 +243,7 @@ document.addEventListener('DOMContentLoaded', function () {
       navbar.classList.toggle('show');
     });
 });
+
+function logout(){
+    window.location.href = '../notAuthorized/index.html';
+}

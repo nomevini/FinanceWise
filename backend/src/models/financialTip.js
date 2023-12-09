@@ -23,7 +23,11 @@ const FinancialTip = sequelize.define('DicaFinanceira', {
   descricao: {
     type: DataTypes.STRING,
     allowNull: false
-  }
+  },
+  idAdmin: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
 }, {
   freezeTableName: true,
 });

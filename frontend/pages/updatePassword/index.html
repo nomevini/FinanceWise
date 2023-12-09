@@ -7,7 +7,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/toast.css">
+  <link rel="stylesheet" href="./styles/animations.css">
+
   <link rel="icon" href="./assets/favicon.png" type="image/x-icon">
   <title>Atualizar senha - FinanceWise</title>
 
@@ -19,7 +23,7 @@
       <div class="login-wrapper">
         <div class="login-header">  
           <h1>Atualizar senha </h1>
-          <p>Foi enviado no seu email o token para atualização de senha. Use-o para atualizar sua senha</p>  
+          <p id="information">Foi enviado no seu email o token para atualização de senha. Use-o para atualizar sua senha</p>  
         </div>
         <div class="login-form form">
             <div class="input-group">
@@ -55,9 +59,11 @@
 
       </div>
     </div>
-    <div class="image"></div>
+    <div id="toast">
+      <div class="img"><h1>×</h1></div>
+      <div class="description">Por favor, preencha todos os campos!</div>
+    </div>
   </div>
-
   <script src="./scripts/script.js"></script>
 </body>
 </html>

@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/modal.css">
     <link rel="stylesheet" href="./styles/form-modal.css">
-    <link rel="stylesheet" href="./styles/float-button.css">
     <link rel="stylesheet" href="./styles/scrollbar.css">
     <link rel="stylesheet" href="./styles/toast.css">
     <link rel="stylesheet" href="./styles/animations.css">
@@ -49,7 +48,7 @@
             </div>
             <div id="user-logo">
                 <button id="user" onclick="Modal.open('editar usuario','modal-usuario')"><img src="./assets/user.png" alt="Perfil do usuário"></button>
-                <button id="logout" onclick="" type="submit"><img src="./assets/logout.png" alt="Sair da conta"></button>
+                <button id="logout" onclick="logout()" type="submit"><img src="./assets/logout.png" alt="Sair da conta"></button>
             </div>
         </div>
     </header>
@@ -231,8 +230,6 @@
         </div>
     </div>
 
-
-
     <div id="toast">
         <div class="img"><h1>×</h1></div>
         <div class="description">Por favor, preencha todos os campos!</div>
@@ -241,6 +238,8 @@
     <footer><small>© 2023 - FinanceWise</small></footer>
     
     <script src="./scripts/index.js" type="text/javascript"></script>
+    <script src="./scripts/authorization.js" type="module"></script>
+
 
 </body>
 </html>

@@ -13,7 +13,6 @@ const authentication = async (req, res, next) => {
     try {
 
         token = token.split(' ')[1]
-        console.log(token)
         const {userId} = jwt.verify(token, jwt_credentials.password)
 
         const user = await User.findOne({ where: { id:userId } });
