@@ -12,6 +12,7 @@ const registerUser = async (req, res) => {
 
     // Verifica se o e-mail já está cadastrado
     const usuarioExistente = await User.findOne({ where: { email } });
+    
     if (usuarioExistente) {
         return res.status(400).json({ error: 'E-mail já cadastrado' });
     }
@@ -90,7 +91,6 @@ const login = async (req, res) => {
 const resetPassword = async (req, res) => {
     const { email } = req.body;
 
-
     try {
         // Encontrar o usuário com base no email
         const user = await User.findOne({ where: { email } });
@@ -103,7 +103,7 @@ const resetPassword = async (req, res) => {
             const mailOptions = {
                 from: 'sousav387@gmail.com', // Remetente
                 to: `${email}`, // Destinatário
-                subject: 'FinanceWise - Recuperacao de senha',
+                subject: 'MeConta - Recuperacao de senha',
                 html: generateHtmlContent(`${emailToken}`)
             };
 
@@ -152,7 +152,7 @@ const updatePassword = async (req, res) => {
                     token: null
                 })
 
-                return res.status(200).json({message: "Senha atualizada"})
+                return res.status(200).json({message: "Senha atualizada com sucesso"})
             }else {
                 return res.status(401).json({error: 'Token inválido'})
             }

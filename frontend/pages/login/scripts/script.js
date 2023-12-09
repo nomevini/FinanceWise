@@ -93,18 +93,15 @@ async function registerUser(admin=undefined) {
         });
 
         if (!response.ok) {
-            throw new Error(`Erro na requisição: ${response.status}`);
+            const error = await response.json()
+            throw new Error(error.error);
         }
 
-        let data = await response.json();
-
-        console.log('Usuário cadastrado com sucesso:', data);
-
-        // informar para o usuario que foi cadastrado com sucesso
         window.location.href = '../successRegister/index.html';
-
+        
     } catch (error) {
-        console.error('Erro no cadastro de usuário:', error.message);
+        console.error('Erro no cadastro de usuário:', error);
+        toastError(error.message)
     }
 }
 
@@ -174,5 +171,18 @@ async function loginUser() {
 
     } catch (error) {
         console.error('Erro no login do usuário:', error.message);
+        toastError(error.message)
     }
+}
+
+function toastError(message = "ERRO!") {
+    const toastId = document.querySelector("#toast")
+    const toastText = document.querySelector('.description')
+
+    toastText.innerText = message
+    toastId.className = "show"
+
+    setTimeout(() => {
+        toastId.className = toastId.className.replace("show", "")
+    }, 5000)
 }

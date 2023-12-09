@@ -145,3 +145,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+function logout(){
+    window.location.href = '../notAuthorized/index.html';
+}

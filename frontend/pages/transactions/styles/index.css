@@ -320,7 +320,14 @@ footer {
 @media screen and (max-width: 768px) {
     #img-logo-menu  {
         display: block !important; 
+        width: 40%;
+        max-width: 300px;
     }
+
+    #img-logo-menu img {
+        width: 100%;
+    }
+    
     
     #menu-icon {
       display: block;

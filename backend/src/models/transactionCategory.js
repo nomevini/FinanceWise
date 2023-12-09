@@ -14,6 +14,11 @@ const TransactionCategory = sequelize.define('CategoriaTransacao', {
     allowNull: false,
     unique: true
   },
+  usuarioId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    unique: false
+  },
 }, {
   freezeTableName: true,
 });

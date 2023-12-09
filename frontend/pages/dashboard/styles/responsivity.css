@@ -11,10 +11,6 @@
     div#toast {
         font-size: 14px;
     }
-    .float-button {
-        bottom: 40px;
-        right: 40px;
-    }
 }
 
 @media (min-width: 400px) {
