@@ -1,6 +1,6 @@
 const Categoria = require('../models/transactionCategory')
 const Dica = require('../models/financialTip')
-require('../models/index')
+require('../models/init')
 
 const createTip = async (req, res) => {
     const {titulo, categoria, descricao} = req.body

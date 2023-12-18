@@ -248,7 +248,46 @@ footer {
     text-align: center;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+ 
+.page-link,
+.nav-link {
+    padding: 10px;
+    margin: 0 5px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.page-link:hover,
+.nav-link:hover {
+    background-color: #f1f1f1;
+}
+
+.nav-link {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.nav-link:hover {
+    background-color: #45a049;
+}
+
+
 @media screen and (max-width: 768px) {
+
+    .footer {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+    }
+
     #img-logo-menu  {
         display: block !important; 
         width: 40%;

@@ -26,8 +26,6 @@ document.getElementById('form-create-tip').addEventListener('submit', async func
             const error = await response.json()
             throw new Error(error.error);
         }
-
-        console.log("Dica cadastrada com sucesso")
             
     } catch (error) {
         console.error('Erro na criação da dica:', error);
@@ -86,7 +84,7 @@ document.querySelector('#modal-delete-button').addEventListener('click', async f
             const error = await response.json()
             throw new Error(error.error);
         }
-
+        
         location.reload();
 
     } catch (error) {

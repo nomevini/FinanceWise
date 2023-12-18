@@ -43,10 +43,10 @@ TransactionCategory.belongsTo(User, { foreignKey: 'usuarioId' });
 User.hasMany(PaymentMethod, { foreignKey: 'usuarioId' });
 PaymentMethod.belongsTo(User, { foreignKey: 'usuarioId' });
 
-sequelize.sync()
+/* sequelize.sync()
   .then(() => {
     console.log('Tabelas criadas com sucesso.');
   })
   .catch((error) => {
     console.error('Erro ao criar tabelas:', error);
-  });
+  }); */

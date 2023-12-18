@@ -103,7 +103,7 @@ const resetPassword = async (req, res) => {
             const mailOptions = {
                 from: 'sousav387@gmail.com', // Remetente
                 to: `${email}`, // Destinatário
-                subject: 'MeConta - Recuperacao de senha',
+                subject: 'FinanceWise - Recuperacao de senha',
                 html: generateHtmlContent(`${emailToken}`)
             };
 

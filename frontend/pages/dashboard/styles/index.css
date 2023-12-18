@@ -350,6 +350,13 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
+    
+    .footer {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+    }
+
     #img-logo-menu  {
         display: block !important; 
         width: 40%;
@@ -359,6 +366,7 @@ footer {
     #img-logo-menu img {
         width: 100%;
     }
+    
     
     #menu-icon {
       display: block;

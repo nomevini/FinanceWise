@@ -3,6 +3,7 @@ const { registerUser, deleteUser, login, resetPassword, updatePassword } = requi
 const authentication = require('../middlewares/authentication')
 const { createTip, getTip, updateTip, deleteTip } = require('../controllers/tip')
 const { createCategory, getCategory } = require('../controllers/category')
+const {createGoal, getGoals, deleteGoal, updateGoal} = require('../controllers/goals')
 
 const routes = express()
 
@@ -37,8 +38,9 @@ routes.get('/dicas', getTip) // listar dicas financeiras
 routes.put('/dica/:id', updateTip) // editar dica financeira
 routes.delete('/dica/:id', deleteTip) // deletar uma dica financeira
 
-routes.get('/metas') // listar metas financeiras
-routes.post('/metas') // criar meta financeira
-routes.put('/metas') // editar meta financeira
+routes.post('/meta', createGoal) // criar meta financeira
+routes.get('/metas', getGoals) // listar metas financeiras
+routes.put('/meta/:metaId', updateGoal) // editar meta financeira
+routes.delete('/meta/:metaId', deleteGoal) // editar meta financeira
 
 module.exports = routes
