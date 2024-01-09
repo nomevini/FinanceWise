@@ -30,18 +30,6 @@ function capitalizeFirstLetter(string) {
     return firstLetter + remaining.join('')
 }
 
-function toastError(message = "ERRO!") {
-
-    const toastId = document.querySelector("#toast")
-    const toastText = document.querySelector("#description-toast")
-    toastId.className = "show"
-    toastText.innerText = message
-
-    setTimeout(() => {
-        toastId.className = toastId.className.replace("show", "")
-    }, 5000)
-}
-
 /* Abrir o menu de sanduíche */
 document.addEventListener('DOMContentLoaded', function () {
     const menuIcon = document.getElementById('menu-icon');

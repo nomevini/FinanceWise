@@ -6,7 +6,7 @@ async function loadTipCategories() {
     const decodedToken = parseJwt(token);
 
     try {
-        let response = await fetch(`http://localhost:3000/categoria/${decodedToken.userId}`, {
+        let response = await fetch(`http://localhost:3000/categoria-sistema/${decodedToken.userId}`, {
             method: 'GET',
             headers: {
             'Authorization': `Bearer ${token}`,
@@ -107,6 +107,5 @@ async function loadTips({pagina=1,itensPorPagina=6}) {
 }
 
 const data = await loadTips({pagina:1,itensPorPagina:6})
-console.log(data)
 loadTipCategories()
 export {data, loadTips};

@@ -1,4 +1,4 @@
-function parseJwt(token) {
+export function parseJwt(token) {
     if (!token) {
       return;
     }

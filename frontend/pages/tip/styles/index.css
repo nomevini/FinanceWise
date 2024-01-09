@@ -147,6 +147,10 @@ footer {
 
     padding: 4rem 0 2rem;
     text-align: center;
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .toggleButton {
@@ -187,15 +191,13 @@ footer {
 @media screen and (max-width: 768px) {
     #img-logo-menu  {
         display: block !important; 
-        width: 40%;
-        max-width: 300px;
+        width: 35%;
     }
 
     #img-logo-menu img {
         width: 100%;
     }
-    
-    
+
     #menu-icon {
       display: block;
 

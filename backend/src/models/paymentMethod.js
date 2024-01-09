@@ -12,16 +12,8 @@ const PaymentMethod = sequelize.define('MetodoPagamento', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  renovarSaldo: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false
-  },
-  valorAdicionado: {
-    type: DataTypes.FLOAT,
-    allowNull: false
-  },
-  dataRenovacao: {
-    type: DataTypes.DATE,
+  usuarioId: {
+    type: DataTypes.INTEGER,
     allowNull: false
   }
 }, {

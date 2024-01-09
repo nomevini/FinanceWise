@@ -10,7 +10,11 @@
     margin-top: 0;
 }
 
-input {
+select {
+    background-color: white;
+}
+
+input, select {
     width: 100%;
 
     padding: 0.8rem;
@@ -22,6 +26,7 @@ input {
     -ms-border-radius: 0.2rem;
     -o-border-radius: 0.2rem;
 }
+
 
 .red {
     background-color: var(--normal-red);

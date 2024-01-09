@@ -8,6 +8,14 @@ const Transaction = sequelize.define('Transacao', {
     autoIncrement: true,
     allowNull: false,
   },
+  categoria: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  metodoPagamento: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
   descricao: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -28,6 +36,14 @@ const Transaction = sequelize.define('Transacao', {
     type: DataTypes.DATE,
     allowNull: false
   },
+  metaId: {
+    type: DataTypes.INTEGER,
+    allowNull: true
+  },
+  usuarioId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  }
 }, {
   freezeTableName: true,
 });

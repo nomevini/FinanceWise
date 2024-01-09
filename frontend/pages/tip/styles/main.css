@@ -43,11 +43,9 @@
 body {
     background: var(--background);
     font-family: 'Poppins', sans-serif;
-    height: 100%;
 }
 html {
     font-size: 93.75%; /*15px*/
-    height: 100%;
 }
 
 .sr-only {
