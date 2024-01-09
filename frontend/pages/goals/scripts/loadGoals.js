@@ -48,6 +48,13 @@ async function loadGoals({pagina=1,itensPorPagina=6}) {
 
             const stats = document.createElement('td');
             stats.innerHTML = meta.status
+
+            if (stats.innerHTML == 'Concluido'){
+                stats.style.color = 'green';
+            } else {
+                stats.style.color = 'red';
+            }
+
             goal.appendChild(stats)
 
             goal.onclick = function(){

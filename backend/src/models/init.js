@@ -49,4 +49,4 @@ PaymentMethod.belongsTo(User, { foreignKey: 'usuarioId' });
   })
   .catch((error) => {
     console.error('Erro ao criar tabelas:', error);
-  }); */
+}); */

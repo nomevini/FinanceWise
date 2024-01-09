@@ -25,6 +25,7 @@
 
     width: 90%;
     max-width: 500px;
+    max-height: 800px;
     
     background: var(--background-modal);
 
@@ -35,8 +36,15 @@
 }
 
 @media (min-width: 800px) {
+
+    .modal .relatorio {
+        width: 90%; 
+        max-width: 800px !important;
+    }
+
     .modal {
         width: 90%;
-        max-width: 500px;
+        max-width: 600px;
     }
+
 }

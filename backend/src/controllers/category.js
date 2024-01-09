@@ -2,14 +2,12 @@ const Categoria = require('../models/transactionCategory')
 const Usuario = require('../models/user')
 
 const createCategory = async (req, res) => {
-    const { nome, userId } = req.body;
+    const { nome, usuarioId } = req.body;
 
     try {
-        if (!nome || !userId) {
+        if (!nome || !usuarioId) {
             return res.status(400).json({ error: 'Campos obrigatórios não fornecidos.' });
         }
-
-        const usuarioId = userId
 
         const usuarioExistente = await Usuario.findByPk(usuarioId);
         if (!usuarioExistente) {
@@ -42,12 +40,39 @@ const createCategory = async (req, res) => {
 
         res.status(201).json({ message: 'Categoria criada com sucesso.', categoria: novaCategoria });
     } catch (error) {
-        console.error('Erro ao criar/verificar categoria:', error);
         res.status(500).json({ error: 'Erro interno do servidor.' });
     }
 };
 
-const getCategory = async (req, res) => {
+const getUserCategories = async (req, res) => {
+    const {userId} = req.params
+
+    try {
+
+        if (!userId) {
+            return res.status(400).json({ error: 'Campos obrigatórios não fornecidos.' });
+        }
+
+        let usuarioId = userId
+
+        const usuarioExistente = await Usuario.findByPk(usuarioId);
+        if (!usuarioExistente) {
+            return res.status(404).json({ error: 'Usuário não encontrado.' });
+        }
+
+        const categoriasUsuario = await Categoria.findAll({
+            where: { usuarioId: usuarioId },
+            attributes: ['nome', 'id'],
+        });
+
+        return res.status(200).json(categoriasUsuario)   
+    } catch (error) {
+        res.status(500).json({ error: 'Erro interno do servidor.' });
+    }
+}
+
+
+const getDefaultCategories = async (req, res) => {
     const {userId} = req.params
 
     try {
@@ -68,28 +93,55 @@ const getCategory = async (req, res) => {
         // buscar todas as categorias desses ususarios  
         const categoriasAdmin = await Categoria.findAll({
             where: { usuarioId: userAdmin },
-            attributes: ['nome'],
+            attributes: ['nome', 'id'],
         });
   
-        const categoriasUsuario = await Categoria.findAll({
-            where: { usuarioId: usuarioId },
-            attributes: ['nome'],
-        });
-
-        if (!categoriasUsuario.length) {
-            return res.status(200).json(categoriasAdmin)
-        }else if (userId == userAdmin) {
-            return res.status(200).json(categoriasAdmin) // se o usuario for admin
-        }else {
-            return res.status(200).json(categoriasAdmin.concat(categoriasUsuario))
-        }   
+        return res.status(200).json(categoriasAdmin)   
     } catch (error) {
-        console.error('Erro ao criar/verificar categoria:', error);
         res.status(500).json({ error: 'Erro interno do servidor.' });
+    }
+}
+
+const deletecategory = async (req, res) => {
+    try {
+        const usuarioId = req.params.userId
+        const {nome} = req.body
+
+
+        const user = await Usuario.findByPk(usuarioId)
+
+        if (!user) {
+            return res.status(404).json({message: 'Usuário não encontrado'})
+        }
+
+        const categoria = await Categoria.findOne({
+            where: {
+                usuarioId,
+                nome
+            }
+        })
+
+        if (!categoria) {
+            return res.status(404).json({message: "Categoria não encontrada"})
+        }
+
+        await Categoria.destroy({
+            where: {
+                usuarioId,
+                nome
+            }
+        })
+
+        return res.status(200).json({message: "Categoria excluída com sucesso"})
+
+    } catch (error) {
+        return res.status(500).json({message: "erro interno do servidor"})
     }
 }
 
 module.exports = {
     createCategory,
-    getCategory
+    getDefaultCategories,
+    deletecategory,
+    getUserCategories
 };

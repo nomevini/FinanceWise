@@ -18,8 +18,6 @@
     }
 }
 
-
-
 @-webkit-keyframes expand {
     from{
         min-width: 50px
@@ -37,8 +35,6 @@
     }
 }
 
-
-
 @-webkit-keyframes stay {
     from{
         min-width: 350px
@@ -47,6 +43,7 @@
         min-width: 350px
     }
 }
+
 @keyframes stay {
     from{
         min-width: 350px
@@ -55,8 +52,6 @@
         min-width: 350px
     }
 }
-
-
 
 @-webkit-keyframes shrink {
     from{

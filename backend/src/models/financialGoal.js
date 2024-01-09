@@ -29,7 +29,7 @@ const FinancialGoal = sequelize.define('MetaFinanceira', {
   },
   status: {
     type: DataTypes.STRING,
-  },
+  }
 }, {
   freezeTableName: true,
 });

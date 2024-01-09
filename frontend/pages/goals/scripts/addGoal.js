@@ -1,4 +1,5 @@
 import { parseJwt } from "./authorization.js";
+import { toastError } from "./toastError.js";
 
 // Função para adicionar uma meta à tabela
 async function createGoal() {
@@ -59,12 +60,17 @@ createGoalButton.addEventListener('click', function(event){
     let endDate = document.getElementById("end-date-create").value;
     let stats = document.getElementById("stats-create").value;
 
+    if (new Date(endDate) - new Date(startDate) < 0) {
+        toastError("Data inválida")
+        return
+    }
+    
+    console.log('aqui dps')
     // Verifique se todos os campos estão preenchidos
     if (!title || !amount || !description || !startDate || !endDate || !stats) {
-        showToast("Por favor, preencha todos os campos!");
+        toastError("Por favor, preencha todos os campos!");
         return;
     }
 
     createGoal()
-
 })

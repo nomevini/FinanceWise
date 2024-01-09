@@ -50,8 +50,8 @@
                 <a href="../goals/index.html">Metas</a>
             </div>
             <div id="user-logo">
-                <button id="user" onclick="Modal.open('editar usuario','modal-usuario')"><img src="./assets/user.png" alt="Perfil do usuário"></button>
-                <button id="logout" onclick="logout()" type="submit"><img src="./assets/logout.png" alt="Sair da conta"></button>
+                <button id="user" onclick="Modal.open('editar usuario','modal-usuario')"><img id="userImage" src="./assets/user.png" alt="Perfil do usuário"></button>
+                <button id="logout" onclick="logout()" type="submit"><img  src="./assets/logout.png" alt="Sair da conta"></button>
             </div>
         </div>
     </header>
@@ -123,11 +123,11 @@
     <div class="modal-overlay modal-usuario">
         <div class="modal">
             <div id="form">
-                <form action="">
+                <form id="user-informations" action="">
                     <h2 id="modal-title">Editar usuário</h2>
                     <div class="input-group">
                         <label for="name">Nome</label>
-                        <input type="text" id="name" name="name" placeholder="Vinícius">
+                        <input type="text" id="username" name="name" placeholder="Vinícius">
                     </div>
 
                     <div class="input-group">
@@ -143,9 +143,9 @@
                     <div class="input-group">
                         <label for="genero">Sexo</label>
                         <select id="genero" name="genero">
-                        <option value="masculino">Masculino</option>
-                        <option value="feminino">Feminino</option>
-                        <option value="outro">Outro</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Outro">Outro</option>
                         </select>
 
                     </div>
@@ -153,6 +153,7 @@
                     <div class="input-group">
                         <label for="imagemInput">Escolha uma imagem para seu perfil:</label>
                         <input type="file" id="imagemInput" name="imagem" accept="image/*">
+                        <small>A Imagem deve conter proporções iguais (200x200, 500x500, etc)</small>
                     </div>                    
                     
                     <div class="input-group actions">
@@ -184,6 +185,8 @@
     <script src="./scripts/loadTipCategory.js" type="module"></script>
     <script src="./scripts/tip.js" type="module"></script>
     <script src="./scripts/pagination.js" type="module"></script>
+    <script src="./scripts/user.js" type="module"></script>
+    <script src="./scripts/toastError.js" type="module"></script>
 
 </body>
 </html>

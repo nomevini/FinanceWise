@@ -224,6 +224,10 @@ footer {
 
     padding: 4rem 0 2rem;
     text-align: center;
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 /*Wanderlei*/
@@ -235,17 +239,6 @@ footer {
     color: black;
 }
 
-#data-table .TransactionStatus.Pendence {
-    color: orange;
-}
-
- #data-table .TransactionStatus.Finished {
-    color: green;
-}
-
-#data-table .TransactionStatus.Canceled {
-    color: red;
-}
 
 .toggleButton {
     cursor: pointer;
@@ -317,24 +310,24 @@ footer {
     color: var(--link-dark-green); /* Cor do texto dos links */
 }
 
+#btn-deletar-transacao {
+    background-color: white;
+}
+
+#btn-deletar-transacao img {
+    width: 25px;
+}
+
 @media screen and (max-width: 768px) {
-
-    .footer {
-        position: absolute;
-        width: 100%;
-        bottom: 0;
-    }
-
     #img-logo-menu  {
         display: block !important; 
-        width: 40%;
-        max-width: 300px;
+        width: 35%;
     }
 
     #img-logo-menu img {
         width: 100%;
     }
-    
+
     #menu-icon {
       display: block;
 

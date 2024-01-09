@@ -24,6 +24,10 @@ const User = sequelize.define('Usuario', {
     type: DataTypes.DATE,
     allowNull: false,
   },
+  sexo: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   email: {
     type: DataTypes.STRING,
     unique: true,
@@ -42,7 +46,7 @@ const User = sequelize.define('Usuario', {
     allowNull: true
   },
   imagemPerfil: {
-    type: DataTypes.BLOB,
+    type: DataTypes.STRING,
     allowNull: true, // Pode ser nulo se o usuário não tiver uma imagem
   }
 }, {

@@ -23,7 +23,7 @@ const registerUser = async (req, res) => {
     const novoUsuario = await User.create({
         nome,
         sobrenome,
-        dataNascimento,
+        dataNascimento: new Date(dataNascimento),
         email,
         senha: senhaHash,
         admin: admin
@@ -156,7 +156,7 @@ const updatePassword = async (req, res) => {
             }else {
                 return res.status(401).json({error: 'Token inválido'})
             }
-        }else {
+        } else {
             return res.status(401).json({error: 'Token inválido'})
         }
         
@@ -166,10 +166,76 @@ const updatePassword = async (req, res) => {
     }
 }
 
+
+const getUser = async (req, res) => {
+    try {
+        const usuarioId = req.params.userId
+
+        if (!usuarioId) {
+            return res.status(404).json({message:"Campo obrigatório não fornecido"})
+        }
+
+        const user = await User.findByPk(usuarioId)
+
+        if (!user) {
+            return res.status(404).json({message: "Usuário não encontrado"})
+        }
+
+        const {nome, sobrenome, dataNascimento, sexo, imagemPerfil} = user.dataValues
+        
+        return res.status(200).json({
+            nome,
+            sobrenome,
+            dataNascimento,
+            sexo,
+            imagemPerfil
+        })
+
+    } catch (error) {
+        return res.status(500).json({message: "erro interno do servidor"})
+    }
+}
+
+const updateUser = async (req, res) => {
+    try {
+        const {nome, sobrenome, dataNascimento, sexo, imagemPerfil} = req.body
+        const usuarioId = req.params.userId
+
+
+        if (!nome || !sobrenome || !dataNascimento) {
+            return res.status(404).json({message:"Campos obrigatórios não fornecidos."})
+        }
+        
+        const user = User.findByPk(usuarioId)
+        if (!user) {
+            return res.status(404).json({message:"Usuário não encontrado"})
+        }
+
+        await User.update({
+            nome,
+            sobrenome,
+            dataNascimento: new Date(dataNascimento),
+            sexo,
+            imagemPerfil
+        },{
+            where: {
+                id: usuarioId
+            }
+        })
+
+        return res.status(200).json({message: "Usuário atualizado com sucesso"})
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({message: "erro interno do servidor"})
+    }
+}
+
 module.exports = {
     registerUser,
     deleteUser,
     login,
     resetPassword,
-    updatePassword
+    updatePassword,
+    updateUser,
+    getUser
 }

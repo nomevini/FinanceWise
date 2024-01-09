@@ -26,8 +26,6 @@
     white-space: nowrap;
 }
 
-
-
 #toast .img {
     color: white;
     background-color: var(--dark-red);
@@ -50,6 +48,3 @@
     overflow: hidden;
 	white-space: nowrap;
 }
-
-
-

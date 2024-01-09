@@ -32,7 +32,7 @@ function formatStringDate(data) {
   
     return ano + '-' + ("0"+mes).slice(-2) + '-' + ("0"+dia).slice(-2);
     // Utilizo o .slice(-2) para garantir o formato com 2 digitos.
-  }
+}
   
 const ModalDetalhes = {
     modalElement: document.querySelector('.modal-detalhes'),
@@ -51,17 +51,6 @@ const ModalDetalhes = {
         this.modalElement.classList.remove('active');
     }
 };
-
-// Função para exibir um toast
-function showToast(message) {
-    var toast = document.getElementById("toast");
-    toast.getElementsByClassName("description")[0].innerHTML = message;
-    toast.style.display = "flex";
-
-    setTimeout(function () {
-        toast.style.display = "none";
-    }, 3000); // Oculta o toast após 3 segundos
-}
 
 /* Abrir o menu de sanduíche */
 document.addEventListener('DOMContentLoaded', function () {

@@ -1,6 +1,6 @@
 /* Form */
 #form {
-    max-width: 500px;
+    max-width: 600px;
 }
 #form h2 {
     margin-top: 0;
@@ -139,4 +139,67 @@ small.help-for-modal {
 
 #valor-receita {
     color: var(--normal-green);
+}
+
+.categories {
+    max-height: 550px;
+    overflow-y: scroll;
+
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+#delete-category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 40px;
+
+    padding: 0 10px;
+    border-radius: 0.2rem;
+
+    background-color: white;
+}
+
+#delete-category button {
+    background-color: white;
+}
+
+#delete-category-title {
+    margin-top: 20px;
+}
+
+.paymentMethods {
+    max-height: 390px;
+    overflow-y: scroll;
+
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+#delete-payment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 40px;
+
+    padding: 0 10px;
+    border-radius: 0.2rem;
+
+    background-color: white;
+}
+
+#delete-payment button {
+    background-color: white;
+}
+
+#delete-payment-title {
+    margin-top: 20px;
+}
+
+.informations {
+    height: 600px;
+    overflow-y: scroll;
 }
