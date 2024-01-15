@@ -46,6 +46,8 @@ const createTransaction = async (req, res) => {
 
         const categoryId = category.dataValues.id
 
+        console.log(qtdParcelas)
+
         if (qtdParcelas > 1) {
             // se a transacao for parcelada, dividir o valor em parcelas e inserir varias contas nos meses seguintes4
 

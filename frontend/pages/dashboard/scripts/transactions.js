@@ -84,12 +84,12 @@ async function getTransactions({pagina=1,itensPorPagina=6}){
             
 
             appendTransactionInformation(transaction.descricao, transactionTable)
-            appendTransactionInformation(transaction.valor, transactionTable)
+            appendTransactionInformation(`R$${transaction.valor}`, transactionTable)
             appendTransactionInformation(transaction.CategoriaTransacao.nome, transactionTable)
             appendTransactionInformation(transaction.MetodoPagamento.nome, transactionTable)
             appendTransactionInformation(transaction.qtdParcelas, transactionTable)
             appendTransactionInformation(corrigirFusoHorario(transaction.dataTransacao), transactionTable)
-            if (transaction.status == "pendente") {
+            if (transaction.status == "Pendente") {
                 appendTransactionInformation(transaction.status, transactionTable, 'red')
             }else {
                 appendTransactionInformation(transaction.status, transactionTable, 'green')

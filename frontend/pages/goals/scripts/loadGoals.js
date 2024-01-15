@@ -39,11 +39,11 @@ async function loadGoals({pagina=1,itensPorPagina=6}) {
             goal.appendChild(description)
 
             const startDate = document.createElement('td');
-            startDate.innerHTML = new Date(meta.dataInicio).toLocaleDateString()
+            startDate.innerHTML = corrigirFusoHorario(meta.dataInicio)
             goal.appendChild(startDate)
             
             const endDate = document.createElement('td');
-            endDate.innerHTML = new Date(meta.dataFinal).toLocaleDateString()
+            endDate.innerHTML = corrigirFusoHorario(meta.dataFinal)
             goal.appendChild(endDate)
 
             const stats = document.createElement('td');
@@ -81,6 +81,18 @@ async function loadGoals({pagina=1,itensPorPagina=6}) {
         console.error(error);
         toastError(error.message)
     }
+}
+
+export function corrigirFusoHorario(dataStr) {
+    const data = new Date(dataStr);
+
+    const umDiaEmMilissegundos = 24 * 60 * 60 * 1000;
+    const dataCorrigida = new Date(data.getTime() + umDiaEmMilissegundos);
+
+    const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    const dataFormatada = dataCorrigida.toLocaleDateString('pt-BR', options);
+
+    return dataFormatada;
 }
 
 const data = await loadGoals({pagina:1,itensPorPagina:6})
