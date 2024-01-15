@@ -39,7 +39,7 @@ transactionForm.addEventListener('submit', async function(e){
                 metodoPagamento: paymentMethod,
                 valor: amount,
                 status:stats,
-                qtdParcelas: 1,
+                qtdParcelas: numberPayments,
                 dataTransacao: date,
                 usuarioId: decodedToken.userId
             })
