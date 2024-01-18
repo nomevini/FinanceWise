@@ -13,7 +13,6 @@ document.getElementById('btn-relatorio').addEventListener('click', async functio
 
         const data = await response.json()
 
-        console.log(data)
         
         const balance = document.getElementById('valor-balanco')
         balance.innerHTML = `R$${data.balancoMensal.balanco}`
@@ -32,6 +31,12 @@ document.getElementById('btn-relatorio').addEventListener('click', async functio
         despesa.innerHTML = `R$${data.balancoMensal.totalDespesas}`
         despesa.style.color = 'red'
 
+        const containerDespesa = document.querySelector('.despesas')
+        containerDespesa.innerHTML = '<h3>Despesas</h3>'     
+        
+        const containerReceita = document.querySelector('.receitas')
+        containerReceita.innerHTML = '<h3>Receitas</h3>'     
+        
         // despesas
         Object.entries(data.transacoesPorCategoria.despesas).forEach(([chave, valor]) => {
             const container = document.querySelector('.despesas')

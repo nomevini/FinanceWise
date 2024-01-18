@@ -47,8 +47,7 @@ transactionForm.addEventListener('submit', async function(e){
         });
 
         const data = await response.json()
-        console.log(data)
-
+        
         document.getElementById('transaction-form').reset()
         location.reload()
     } catch (error) {

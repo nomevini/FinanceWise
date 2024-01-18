@@ -47,7 +47,6 @@ async function loadTipCategories() {
             
         }else {
             sessionStorage.setItem('categories', JSON.stringify(defaultCategories));
-            console.log(defaultCategories)
             insertCategoriesOnSelect(defaultCategories)
             insertCategoriesOnMyCategories(defaultCategories)
         }
