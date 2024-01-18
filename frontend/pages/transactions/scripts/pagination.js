@@ -34,7 +34,7 @@ function atualizarPaginacao() {
 function selecionarPagina(numeroPagina) {
     paginaAtual = numeroPagina;
     atualizarPaginacao();
-    getTransactions({pagina:numeroPagina, itensPorPagina:9})
+    getTransactions({pagina:numeroPagina, itensPorPagina:7})
     scrollToTop();
 }
 

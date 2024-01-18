@@ -122,7 +122,7 @@ async function getTransactions({pagina=1,itensPorPagina=6}){
     }
 }
 
-const data = await getTransactions({pagina:1,itensPorPagina:9})
+const data = await getTransactions({pagina:1,itensPorPagina:7})
 
 export function appendTransactionInformation(information, parent, color=undefined){
     const transactionDescription = document.createElement('th')

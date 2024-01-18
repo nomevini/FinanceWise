@@ -75,6 +75,9 @@ document.getElementById('btn-relatorio').addEventListener('click', async functio
       const dadosDespesas = data.variacoesDiarias.map(item => Math.abs(item.despesas));
 
       const maiorDespesa = Math.max(...dadosDespesas);
+      const maiorReceita = Math.max(...dadosReceitas);
+
+      const maior = maiorDespesa > maiorReceita ? maiorDespesa : maiorReceita;
 
       const ctx = document.getElementById('grafico').getContext('2d');
 
@@ -104,7 +107,7 @@ document.getElementById('btn-relatorio').addEventListener('click', async functio
             },
             y: {
               beginAtZero: true,
-              max: maiorDespesa,
+              max: maior + 100,
             },
           },
         },
