@@ -46,13 +46,11 @@ const createTransaction = async (req, res) => {
 
         const categoryId = category.dataValues.id
 
-        console.log(qtdParcelas)
-
         if (qtdParcelas > 1) {
             // se a transacao for parcelada, dividir o valor em parcelas e inserir varias contas nos meses seguintes4
 
             // Calcular o valor de cada parcela
-            const valorParcela = valor / qtdParcelas;
+            const valorParcela = (valor / qtdParcelas).toFixed(2);
 
             // Criar transações para cada parcela nos meses seguintes
             const data = new Date(dataTransacao);
@@ -81,6 +79,11 @@ const createTransaction = async (req, res) => {
                 }else {
                     data.setMonth(mesAtual + 1);
                 }
+
+                if (status == 'Finalizada'){
+                    status = 'Pendente'
+                }
+
                 counter--;
             }
 

@@ -107,7 +107,7 @@ function loadTransaction(data){
         appendTransactionInformation(transaction.MetodoPagamento.nome, transactionTable)
         appendTransactionInformation(transaction.qtdParcelas, transactionTable)
         appendTransactionInformation(corrigirFusoHorario(transaction.dataTransacao), transactionTable)
-        if (transaction.status == "pendente") {
+        if (transaction.status == "Pendente") {
             appendTransactionInformation(transaction.status, transactionTable, 'red')
         }else {
             appendTransactionInformation(transaction.status, transactionTable, 'green')

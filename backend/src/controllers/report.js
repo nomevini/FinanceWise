@@ -21,12 +21,14 @@ const calcularPrimeiroEUltimoDiaDoMes = (ano, mes) => {
 };
 
 // Função para consultar transações do mês atual
-const consultarTransacoesDoMes = async (primeiroDiaMes, ultimoDiaMes) => {
+const consultarTransacoesDoMes = async (primeiroDiaMes, ultimoDiaMes, userId) => {
+
   return await Transacao.findAll({
     where: {
       dataTransacao: {
         [Op.between]: [primeiroDiaMes, ultimoDiaMes],
       },
+      usuarioId: userId
     },
     include: [{ model: Categoria, attributes: ['nome'] }, { model: MetodoPagamento, attributes: ['nome'] }],
   });
@@ -71,7 +73,7 @@ const agruparTransacoesPorCategoria = transacoesDoMes => {
 };
 
 // Função para consultar variações diárias de despesas e receitas no mês
-const consultarVariacoesDiarias = async (primeiroDiaMes, ultimoDiaMes) => {
+const consultarVariacoesDiarias = async (primeiroDiaMes, ultimoDiaMes, userId) => {
   try {
     // Consultar todas as transações do mês atual
     const transacoesDoMes = await Transacao.findAll({
@@ -79,6 +81,7 @@ const consultarVariacoesDiarias = async (primeiroDiaMes, ultimoDiaMes) => {
         dataTransacao: {
           [Op.between]: [primeiroDiaMes, ultimoDiaMes],
         },
+        usuarioId: userId
       },
       order: [['dataTransacao', 'ASC']], // Adiciona a cláusula order para ordenar pela dataTransacao
     });
@@ -114,6 +117,9 @@ const consultarVariacoesDiarias = async (primeiroDiaMes, ultimoDiaMes) => {
 
 const relatorioMensal = async (req, res) => {
   try {
+
+    const userId = req.usuario.id
+
     // Obter o mês e ano atual
     const { anoAtual, mesAtual } = obterMesEAnoAtual();
 
@@ -121,7 +127,7 @@ const relatorioMensal = async (req, res) => {
     const { primeiroDiaMes, ultimoDiaMes } = calcularPrimeiroEUltimoDiaDoMes(anoAtual, mesAtual);
 
     // Consultar todas as transações do mês atual
-    const transacoesDoMes = await consultarTransacoesDoMes(primeiroDiaMes, ultimoDiaMes);
+    const transacoesDoMes = await consultarTransacoesDoMes(primeiroDiaMes, ultimoDiaMes, userId);
 
     // Calcular o balanço do mês considerando a inversão de valores para despesas
     const balancoMensal = calcularBalançoMensal(transacoesDoMes);
@@ -130,7 +136,7 @@ const relatorioMensal = async (req, res) => {
      const transacoesPorCategoria = agruparTransacoesPorCategoria(transacoesDoMes);
 
     // Consultar variações diárias de despesas e receitas no mês
-    const variacoesDiarias = await consultarVariacoesDiarias(primeiroDiaMes, ultimoDiaMes);
+    const variacoesDiarias = await consultarVariacoesDiarias(primeiroDiaMes, ultimoDiaMes, userId);
 
     return res.status(200).json({
         balancoMensal,

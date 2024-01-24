@@ -175,7 +175,8 @@ export async function deleteTransaction() {
 function editTransaction(){
 
     document.getElementById('edit-description-transaction').value = this.parentNode.childNodes[0].innerHTML
-    document.getElementById('edit-amount-transaction').value = this.parentNode.childNodes[1].innerHTML
+    document.getElementById('edit-amount-transaction').value = this.parentNode.childNodes[1].innerHTML.replace('R$','')
+  
 
     const categoryOptions = document.getElementById('edit-category-transaction').options
     for (const option of categoryOptions) {

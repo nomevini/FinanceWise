@@ -198,12 +198,17 @@ const getUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
     try {
-        const {nome, sobrenome, dataNascimento, sexo, imagemPerfil} = req.body
+        const {nome, sobrenome, dataNascimento, sexo} = req.body
+        let {imagemPerfil} = req.body
         const usuarioId = req.params.userId
 
 
         if (!nome || !sobrenome || !dataNascimento) {
             return res.status(404).json({message:"Campos obrigatórios não fornecidos."})
+        }
+
+        if (!imagemPerfil) {
+            imagemPerfil = ''
         }
         
         const user = User.findByPk(usuarioId)

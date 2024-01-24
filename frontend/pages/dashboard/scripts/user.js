@@ -36,7 +36,7 @@ userForm.addEventListener('submit', async function(e) {
   const dataNascimento = document.getElementById('date').value
   const sexo = document.getElementById('genero').value
   const imagemPerfil = document.getElementById('imagemInput')
-  let imageLink;
+  let imageLink = null;
 
   const token = sessionStorage.getItem('token')
   const decodedToken = parseJwt(token);
@@ -117,6 +117,7 @@ async function loadUserInformations(){
 
     response = await response.json()
 
+
     // inserir informacoes nos campos
     const {nome, sobrenome, sexo, dataNascimento, imagemPerfil} = response
 
@@ -160,6 +161,5 @@ function formatStringDate(data) {
   return ano + '-' + ("0"+mes).slice(-2) + '-' + ("0"+dia).slice(-2);
   // Utilizo o .slice(-2) para garantir o formato com 2 digitos.
 }
-
 
 await loadUserInformations()

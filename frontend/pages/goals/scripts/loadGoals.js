@@ -39,6 +39,7 @@ async function loadGoals({pagina=1,itensPorPagina=6}) {
             goal.appendChild(description)
 
             const startDate = document.createElement('td');
+
             startDate.innerHTML = corrigirFusoHorario(meta.dataInicio)
             goal.appendChild(startDate)
             
