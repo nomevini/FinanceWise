@@ -49,7 +49,7 @@ document.getElementById('btn-relatorio').addEventListener('click', async functio
 
             const valorDespesa = document.createElement('p')
             valorDespesa.id = 'valor-despesa'
-            valorDespesa.innerHTML = valor
+            valorDespesa.innerHTML = `R$${valor}`
 
             despesa.appendChild(nomeDespesa)
             despesa.appendChild(valorDespesa)
@@ -68,7 +68,7 @@ document.getElementById('btn-relatorio').addEventListener('click', async functio
 
             const valorReceita = document.createElement('p')
             valorReceita.id = 'valor-receita'
-            valorReceita.innerHTML = valor
+            valorReceita.innerHTML = `R$${valor}`
 
             receita.appendChild(nomeReceita)
             receita.appendChild(valorReceita)
